@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
@@ -28,7 +28,7 @@ def register(request):
 
 def log(request):
     if request.method == "GET":
-        return render(request, 'log.html', {'form' : UserAuthenticationForm()})
+        return render(request, 'log.html', {'form' : AuthenticationForm()})
     else:
         user = authenticate(username = request.POST.get('username', password = request.POST.get('password')))
         if user is not None:
@@ -36,7 +36,7 @@ def log(request):
             return redirect('home')
         else:
             error = 'Username or password is wrong. Try again'
-            return render(request, 'log.html', {'form' : UserAuthenticationForm(), 'error' : error})
+            return render(request, 'log.html', {'form' : AuthenticationForm(), 'error' : error})
 
 def logoutuser(request):
      logout(request)
