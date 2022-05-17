@@ -1,0 +1,8 @@
+<h1>Home page</h1>
+{% if user.is_authenticated %}
+    <p>You are logged in as {{user}}</p>
+    <a href="{% url 'ads:logout' %}"></a>
+{% else %}
+    <a href="{% url 'ads:register' %}">Register</a>
+    <a href="{% url 'ads:log'%}">Log in</a>
+{% endif %}

@@ -1,0 +1,5 @@
+<form action="{% url 'ads:register' %}" method="POST">
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Register</button>
+</form>
