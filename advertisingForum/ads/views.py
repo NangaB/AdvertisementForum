@@ -5,11 +5,14 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import authenticate
 from .forms import AdForm
+from django.contrib.auth.decorators import login_required
+from .models import Advertisement
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    ads = Advertisement.objects.all()
+    return render(request, 'home.html', {'ads' : ads})
 
 def register(request):
     if request.method == "GET":
@@ -40,9 +43,22 @@ def log(request):
             error = 'Username or password is wrong. Try again'
             return render(request, 'log.html', {'form' : AuthenticationForm(), 'error' : error})
 
+@login_required
 def logoutuser(request):
      logout(request)
      return render(request, 'home.html')
 
+@login_required
 def create(request):
-    return render(request, 'create.html', {'form' : AdForm()})
+    if request.method == "GET":
+        return render(request, 'create.html', {'form' : AdForm()})
+    else:
+        form = AdForm(request.POST)
+        if form.is_valid():
+            ad = form.save(commit = False)
+            ad.user = request.user
+            ad.save()
+            return redirect('ads:home')
+        else:
+            error = 'something went wrong. Try agian'
+            return render(request, 'create.html', {'form' : AdForm(), 'error' :error})
