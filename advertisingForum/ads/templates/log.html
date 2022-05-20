@@ -1,1 +1,7 @@
 <h1>Log in</h1>
+{{error}}
+<form action="{% url 'ads:log' %}" method="POST">
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Log in</button>
+</form>

@@ -1,0 +1,6 @@
+<h1>Create Advertisement</h1>
+<form action="{% url 'ads:create' %}" method="POST">
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Send</button>
+</form>
