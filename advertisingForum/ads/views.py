@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -62,3 +62,11 @@ def create(request):
         else:
             error = 'something went wrong. Try agian'
             return render(request, 'create.html', {'form' : AdForm(), 'error' :error})
+
+def detail(request, adId):
+    ad = get_object_or_404(Advertisement, pk=adId)
+    return render(request, 'detail.html', {'ad' : ad})
+
+def my(request):
+    ads = Advertisement.objects.filter(user=request.user)
+    return render(request, 'my.html', {'ads' : ads})

@@ -9,4 +9,6 @@ urlpatterns = [
     path('log', views.log, name = 'log'),
     path('logout', views.logoutuser, name = 'logout'),
     path('create', views.create, name = 'create'),
+    path('<int:adId>', views.detail, name = 'detail'),
+    path('my', views.my, name = 'my'),
 ]
