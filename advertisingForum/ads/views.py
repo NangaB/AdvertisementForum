@@ -72,7 +72,7 @@ def my(request):
     ads = Advertisement.objects.filter(user=request.user)
     return render(request, 'my.html', {'ads' : ads})
 
-
+@login_required
 def edit(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId, user = request.user)
     if request.method == "GET":
@@ -87,6 +87,7 @@ def edit(request, adId):
             error = 'Something went wrong'
             return render(request, 'edit.html', {'form':form, 'ad' : ad, 'error' : error})
 
+@login_required
 def deleteAd(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId, user = request.user)
     ad.delete()
