@@ -1,0 +1,8 @@
+<h1>Edit advertisement</h1>
+{{error}}
+<form action="{% url 'ads:edit' ad.id %}" method="POST">
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Send</button>
+</form>
+<a href="{% url 'ads:delete' ad.id %}">Delete</a>

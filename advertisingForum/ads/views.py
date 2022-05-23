@@ -67,6 +67,27 @@ def detail(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId)
     return render(request, 'detail.html', {'ad' : ad})
 
+
 def my(request):
     ads = Advertisement.objects.filter(user=request.user)
     return render(request, 'my.html', {'ads' : ads})
+
+
+def edit(request, adId):
+    ad = get_object_or_404(Advertisement, pk=adId, user = request.user)
+    if request.method == "GET":
+        form = AdForm(instance = ad)
+        return render(request, 'edit.html', {'form' : form, 'ad' : ad})
+    else:
+        form = AdForm(request.POST, instance = ad)
+        if form.is_valid():
+            form.save()
+            return redirect('ads:my')
+        else:
+            error = 'Something went wrong'
+            return render(request, 'edit.html', {'form':form, 'ad' : ad, 'error' : error})
+
+def deleteAd(request, adId):
+    ad = get_object_or_404(Advertisement, pk=adId, user = request.user)
+    ad.delete()
+    return redirect('ads:my')
