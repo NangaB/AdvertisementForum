@@ -39,7 +39,7 @@ nav ion-icon {
     margin-right: 2rem;
 }
 
-nav {
+nav * {
     background-color: var(--primary);
     color: white;
 }
