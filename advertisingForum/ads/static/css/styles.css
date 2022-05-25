@@ -10,7 +10,7 @@
 }
 
 html, body {
-    font-size : 10px;
+    font-size : 16px;
     font-family : 'Poppins', sans-serif;
     background-color : var(--background);
 }
@@ -20,7 +20,7 @@ a, a:hover {
     color: black;
 }
 
-.row {
+nav * {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -39,7 +39,7 @@ nav ion-icon {
     margin-right: 2rem;
 }
 
-nav * {
+nav {
     background-color: var(--primary);
     color: white;
 }
