@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views import View
 from .import views
 
 app_name = 'ads'
@@ -13,4 +14,5 @@ urlpatterns = [
     path('my', views.my, name = 'my'),
     path('my/<int:adId>', views.edit, name = 'edit'),
     path('delete/<int:adId>', views.deleteAd, name = 'delete'),
+    path('search', views.search, name = 'search'),
 ]

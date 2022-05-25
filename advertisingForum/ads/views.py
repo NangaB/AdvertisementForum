@@ -1,3 +1,4 @@
+from ast import keyword
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -7,6 +8,7 @@ from django.contrib.auth import authenticate
 from .forms import AdForm
 from django.contrib.auth.decorators import login_required
 from .models import Advertisement
+from django.db.models import Q
 
 # Create your views here.
 
@@ -92,3 +94,13 @@ def deleteAd(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId, user = request.user)
     ad.delete()
     return redirect('ads:my')
+
+def search(request):
+    keyWords = request.POST.get('search').split(' ')
+    for word in keyWords:
+        querySet = Advertisement.objects.filter(Q(company__icontains=word) | Q(desc__icontains=word))
+    try:
+        ads = ads | querySet
+    except:
+        ads = querySet
+    return render(request, 'home.html', {'ads' : ads})
