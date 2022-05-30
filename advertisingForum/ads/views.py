@@ -104,3 +104,7 @@ def search(request):
     except:
         ads = querySet
     return render(request, 'home.html', {'ads' : ads})
+
+def displayIndustry(request, industryKey):
+    ads = Advertisement.objects.filter(industry = industryKey)
+    return render(request, 'home.html', {'ads' : ads})

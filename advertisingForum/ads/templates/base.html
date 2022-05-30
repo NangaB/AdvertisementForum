@@ -38,10 +38,10 @@
                 Industries
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="#">Action</a>
-                <a href="#">Another action</a>
-                <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a> -->
+                <a href="{% url 'ads:display_industry' 'nr' %}">Real estate</a>
+                <a href="{% url 'ads:display_industry' 'zd' %}">Health</a>
+                <a href="{% url 'ads:display_industry' 'mt' %}">Cars</a>
+                <a href="{% url 'ads:display_industry' 'ft' %}">Fitness</a>
               </div>
             </li>
             {% if user.is_authenticated %}

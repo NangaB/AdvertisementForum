@@ -15,4 +15,5 @@ urlpatterns = [
     path('my/<int:adId>', views.edit, name = 'edit'),
     path('delete/<int:adId>', views.deleteAd, name = 'delete'),
     path('search', views.search, name = 'search'),
+    path('industry/<str:industryKey>', views.displayIndustry, name = 'display_industry'),
 ]
