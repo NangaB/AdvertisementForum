@@ -19,3 +19,9 @@ class Advertisement(models.Model):
 
     def __str__(self):
         return self.company
+
+    def display_industry(self):
+        for industry in self.industries:
+            if self.industry in industry:
+                to_Display = industry[1]
+        return to_Display

@@ -11,9 +11,25 @@
     <a href="{% url 'ads:log' %}">Log in</a>
 {% endif %}
 
-{% for ad in ads %}
-    <a href="{% url 'ads:detail' ad.id %}"><h1>{{ad.company}}</h1></a>
-    <p>{{ad.desc}}</p>
-{% endfor %}
-
+<div class="row">
+    <div class="ads-row">
+        {% for ad in ads %}
+            <div class="ad-col">
+                <a href="{% url 'ads:detail' ad.id %}"></a>
+                <div class="ad-box">
+                    <span>{{ad.display_industry}}</span>
+                    <div class="info-row">
+                        <div class="info-col-big">
+                            <h2>{{ad.company}}</h2>
+                            <p class="">{{ad.desc|truncatechars:100}}</p>
+                            <p class="small-info">
+                                <ion-icon name="location-outline">{{ad.adress}}</ion-icon>
+                            </p>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}
