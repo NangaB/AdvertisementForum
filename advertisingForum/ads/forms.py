@@ -4,4 +4,4 @@ from .models import Advertisement
 class AdForm(forms.ModelForm):
     class Meta:
         model = Advertisement
-        fields = ['company', 'adress', 'email', 'phone', 'desc', 'industry']
+        fields = ['company', 'address', 'email', 'phone', 'desc', 'industry']

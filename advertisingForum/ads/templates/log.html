@@ -1,7 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
 <h1>Log in</h1>
-{{error}}
-<form action="{% url 'ads:log' %}" method="POST">
-    {{form}}
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+{% endif %}
+<form action="{% url 'ads:log' %}" method="POST" class="create-form">
+    <label for="id_username">Username</label>
+    <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+    <label for="id_password">Password</label>
+    <input type="password" name="password" autocomplete="new-password" required="" id="id_password">
+
     {% csrf_token %}
-    <button type="submit">Log in</button>
+    <button type="submit" class="btn-full">Log in</button>
+    <a href="{% url 'ads:create' %}">Register</a>
 </form>
+
+</div>
+{% endblock content %}

@@ -53,7 +53,7 @@ def logoutuser(request):
 @login_required
 def create(request):
     if request.method == "GET":
-        return render(request, 'create.html', {'form' : AdForm()})
+        return render(request, 'create.html', {'form' : AdForm(), 'ad' : Advertisement})
     else:
         form = AdForm(request.POST)
         if form.is_valid():
@@ -63,7 +63,7 @@ def create(request):
             return redirect('ads:home')
         else:
             error = 'something went wrong. Try agian'
-            return render(request, 'create.html', {'form' : AdForm(), 'error' :error})
+            return render(request, 'create.html', {'form' : AdForm(), 'error' :error, 'ad' : Advertisement})
 
 def detail(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId)
@@ -108,3 +108,13 @@ def search(request):
 def displayIndustry(request, industryKey):
     ads = Advertisement.objects.filter(industry = industryKey)
     return render(request, 'home.html', {'ads' : ads})
+
+@login_required
+def likes(request,adId):
+    ad = get_object_or_404(Advertisement, pk = adId)
+    if ad.likes.filter(id=request.user.id).exist():
+        ad.likes.remove(request.user)
+    else:
+        ad.likes.add(request.user)
+    return redirect('ads:detail',adId = ad.id)
+

@@ -1,6 +1,45 @@
-<h1>Create Advertisement</h1>
-<form action="{% url 'ads:create' %}" method="POST">
-    {{form}}
-    {% csrf_token %}
-    <button type="submit">Send</button>
-</form>
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <h1>Create Advertisement</h1>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    {% endif %}
+
+    <form action="{% url 'ads:create' %}" method="POST">
+        <div class="form-line">
+            <div class="form-element">
+                <label for="id_company">Company:</label>
+                <input type="text" name="company" maxlength="300" required="" id="id_company">
+            </div>
+            <div class="form-element">
+                <label for="id_address">Industry:</label>
+                <select name="industry" required="" id="id_industry">
+                    {% for id, industry in ad.industries %}
+                        <option value="{{id}}">{{industry}}</option>
+                    {% endfor %}
+
+                    <!-- <option value="" selected="">Choose industry</option>
+                    <option value="nr">Nieruchomości</option>
+                    <option value="zd">Zdrowie</option>
+                    <option value="mt">Motoryzacja</option>
+                    <option value="ft">Fitness</option> -->
+                </select>
+                <input type="text" name="address" maxlength="400" required="" id="id_address">
+            </div>
+        </div>
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" maxlength="254" required="" id="id_email">
+        <label for="id_phone">Phone:</label>
+        <input type="text" name="phone" maxlength="14" required="" id="id_phone">
+        <label for="id_desc">Description:</label>
+        <textarea name="desc" cols="40" rows="2" required="" id="id_desc"></textarea>
+
+        {% csrf_token %}
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock content %}

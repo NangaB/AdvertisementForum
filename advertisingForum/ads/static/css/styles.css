@@ -69,3 +69,7 @@ nav {
     height: 100%;
 }
 
+.b {
+    background-color: var(--primary);
+}
+
