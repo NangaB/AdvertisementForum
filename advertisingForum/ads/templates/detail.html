@@ -9,7 +9,7 @@
                     <ion-icon name="location-outline"></ion-icon>{{ad.address}}
                 </p>
                 <p class="small-info">
-                    <a href="">
+                    <a href="{% url 'ads:like' ad.id %}">
                         <ion-icon name="thumbs-up-outline"></ion-icon>{{ad.total_likes}}
                     </a>
                 </p>
@@ -22,8 +22,15 @@
                     <ion-icon name="mail-outline"></ion-icon>{{ad.email}}
                 </p>
             </div>
-                
+        </div>
+        <div class="main-box">
+            <p class="industry">{{ad.display_industry}}</p>
+            <h2>{{ad.company}}</h2>
+            <div class="desc-row">
+            <p><ion-icon name="document-text-sharp"></ion-icon></p>
+                {{ad.desc}}
             </div>
+        </div>
         </div>
     </div>
 </div>

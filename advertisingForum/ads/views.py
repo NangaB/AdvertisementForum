@@ -112,9 +112,9 @@ def displayIndustry(request, industryKey):
 @login_required
 def likes(request,adId):
     ad = get_object_or_404(Advertisement, pk = adId)
-    if ad.likes.filter(id=request.user.id).exist():
+    if ad.likes.filter(id=request.user.id).exists():
         ad.likes.remove(request.user)
     else:
         ad.likes.add(request.user)
-    return redirect('ads:detail',adId = ad.id)
+    return redirect('ads:detail', adId = ad.id)
 

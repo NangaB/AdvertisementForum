@@ -1,4 +1,4 @@
-* {
+/* * {
     margin : 0;
     padding : 0;
     box-sizing : border-box;
@@ -71,5 +71,312 @@ nav {
 
 .b {
     background-color: var(--primary);
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+:root {
+    --background: #f6f6f6;
+    --primary: #2ed2a6;
+}
+
+html, body {
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*--------------------------*/
+
+/* NAV */
+
+/*--------------------------*/
+
+nav * {
+    font-size: 1.7rem;
+}
+
+.container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav input {
+    height: 3.5rem;
+}
+
+nav ion-icon {
+    font-size: 3rem;
+    margin-right: 2rem;
+}
+
+nav {
+    background-color: var(--primary);
+    color: white;
+}
+
+/*--------------------------*/
+
+/* ADS */
+
+/*--------------------------*/
+
+.ads-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ad-col {
+    flex: 0 0 calc(50% - 2.4rem);
+    display: inline-flex;
+    margin-top: 4.8rem;
+}
+
+.ad-box {
+    width: 100%;
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px 3px #e5e5e5;
+    transition: box-shadow 0.4s;
+    height: 100%;
+}
+
+.ad-box:hover {
+    box-shadow: 0 0 17px 5px #d4d4d4;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-col {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-col:last-child {
+    text-align: right;
+}
+
+.big {
+    flex: 5;
+}
+
+.ad-box span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.ad-box h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--primary);
+}
+
+.desc {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.ad-box ion-icon {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-right: 0.7rem;
+    margin-bottom: -3px;
+}
+
+.small-info {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/*--------------------------*/
+
+/* DETAIL   */
+
+/*--------------------------*/
+
+#detail {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 4.5rem;
+    padding: 2rem;
+}
+
+.info-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-data:last-child {
+    text-align: right;
+}
+
+.info-data p {
+    margin-bottom: 1rem;
+}
+
+.industry {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+    margin-top: 1.2rem;
+}
+
+.main-box h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.desc-row {
+    display: flex;
+    margin-top: 1.4rem;
+    justify-content: flex-start;
+}
+
+.desc-row ion-icon {
+    font-size: 2.8rem;
+    margin-bottom: -14px;
+}
+
+.desc-row p {
+    text-align: justify;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-left: 0.7rem;
+}
+
+/*--------------------------*/
+
+/* FORM   */
+
+/*--------------------------*/
+
+.create-form .row {
+    max-width: 900px;
+}
+
+.form-title {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 200;
+    margin-bottom: 2.8rem;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(50% - 1.5rem);
+}
+
+.form-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+input {
+    width: 100%;
+}
+
+.create-form label {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+}
+
+.create-form input, .create-form select, .create-form textarea {
+    height: 3rem;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 20px 2px #e6e6e6;
+    transition: all .5s;
+    width: 100%;
+    margin-bottom: 1.4rem;
+}
+
+.long {
+    flex: 1;
+}
+
+.create-form input:focus, .create-form select:focus, .create-form textarea:focus {
+    box-shadow: 0 0 20px 3px #cdcdcd;
+}
+
+.create-form textarea {
+    height: 18rem;
+}
+
+.create-form select {
+    font-size: 1.5rem;
+}
+
+.btn-full {
+    width: 100%;
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    color: white;
+    font-size: 2rem;
+    font-weight: 200;
+    transition: all 0.4s;
+    text-align: center;
+}
+
+.btn-full:hover {
+    background-color: transparent;
+    color: black;
+}
+
+#edit {
+    color: var(--primary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.save-delete {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.save-delete .btn-full {
+    flex: 0 0 calc(50% - 1rem);
+}
+.row.thin {
+    max-width: 600px;
+}
+.login-link {
+    color: var(--primary);
+    transition: all 0.4s;
+}
+.login-link:hover {
+    color: black;
+}
+.thin .create-form {
+    padding: 0;
+}
