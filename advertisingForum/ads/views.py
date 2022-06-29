@@ -67,6 +67,10 @@ def create(request):
 
 def detail(request, adId):
     ad = get_object_or_404(Advertisement, pk=adId)
+    if ad.likes.filter(id=request.user.id).exists():
+        ad.is_liked = True
+    else:
+        ad.is_liked = False
     return render(request, 'detail.html', {'ad' : ad})
 
 
