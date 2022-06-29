@@ -54,11 +54,13 @@ class DisplayIndustry(APIView):
     def get(self, request, pk):
         try:
             ads = Advertisement.objects.filter(industry=pk)
+            if ads.count() != 0:
+                serializer = AdSerializer(instance=ads, many=True)
+                return Response(data=serializer.data)
+            else:
+                return Response(status=status.HTTP_204_NO_CONTENT)
         except ads.DoesNotExist:
             raise Http404
-        else:
-            serializer = AdSerializer(instance=ads, many=True)
-            return Response(data=serializer.data)
 
 
 
