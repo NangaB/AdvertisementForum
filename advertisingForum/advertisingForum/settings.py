@@ -1,4 +1,3 @@
-import imp
 import django_heroku
 import dj_database_url
 from decouple import config
@@ -143,6 +142,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'ads:log'
-STATICFILES_STORAGES = 'whitenoise.storage.CompressedMainifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedMainifestStaticFilesStorage'
 
 django_heroku.settings(locals())
