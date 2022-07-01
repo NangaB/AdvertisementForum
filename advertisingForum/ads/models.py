@@ -15,7 +15,7 @@ class Advertisement(models.Model):
         ('ft', 'Fitness')
     ]
     industry = models.CharField(max_length=2,choices=industries, default='')
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='ads')
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
 
     def __str__(self):
